@@ -35,22 +35,26 @@ body {
 }
 
 .control-button {
+    color: rgba(0, 0, 0, 0.4);
     transition: transform 0.2s ease; 
 }
 
 .control-button:hover {
+    color: rgba(0, 0, 0, 0.2);
     transform: scale(1.2);
 }
 
 .set-countdown {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #FFD700;
     font-weight: bolder;
     padding: 10px 20px;
     
-    transition: all 0.2s ease; 
+    transition: transform 0.2s ease; 
 }
 
 .set-countdown:hover{
-    background-color: rgba(255, 255, 255, 0.5);
-    transform: scale(1.1);
+    color: #FFD700;
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
