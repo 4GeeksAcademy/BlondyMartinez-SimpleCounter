@@ -8,11 +8,10 @@ import "../styles/index.css";
 //import your own components
 import Home from "./component/home.jsx";
 
-const COUNTER = document.querySelector(".counter-text");
 let seconds = 0;
 let minutes = 0;
 
-function increaseSecondsInCounter() {
+function increaseTimeInCounter() {
     seconds++;
 
     if (seconds >= 60) {
@@ -31,5 +30,5 @@ function formatNumber(number) {
     return number >= 10 ? number : '0' + number;
 }
 
-setInterval(increaseSecondsInCounter, 1000);
+setInterval(increaseTimeInCounter, 1000);
 
