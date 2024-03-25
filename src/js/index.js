@@ -42,14 +42,14 @@ function handleCounterType() {
         case 'COUNTDOWN':
             seconds--;
         
-            if (seconds <= 0) {
+            if (seconds < 0) {
                 if (minutes <= 0) {
                     stopCounter();
                     break;
                 }
 
-                minutes = minutes > 0 ? minutes-- : minutes;
-                seconds = 60;
+                minutes = minutes > 0 ? --minutes : minutes;
+                seconds = 59;
             }
 
             title = 'Countdown from given number.';
@@ -61,9 +61,10 @@ function handleCounterType() {
 
 function setCountdown(value) {
     typeOfCounter = "COUNTDOWN";
+    value++;
     minutes = Math.floor(value / 60);
     seconds = value % 60;
-
+    
     if (!counterInterval) counterInterval = setInterval(updateCounter, 1000);
 }
 
