@@ -46,6 +46,7 @@ class Counter {
     stopCounter() {
         clearInterval(this.counterInterval);
         this.counterInterval = null;
+        this.update();
     }
     
     restart() {
@@ -81,7 +82,6 @@ class Counter {
                 if (this.seconds < 0) {
                     if (this.minutes <= 0) {
                         this.stopCounter();
-                        this.seconds = 0;
                         break;
                     }
     
