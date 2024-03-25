@@ -4,7 +4,7 @@ import React from "react";
 function Home(props){ 
 	return (
 		<div className="text-center">
-			<h1 className="counter-text">{props.seconds}</h1>
+			<h1 className="counter-text">{props.counter}</h1>
 		</div>
 	);
 };

@@ -10,10 +10,25 @@ import Home from "./component/home.jsx";
 
 const COUNTER = document.querySelector(".counter-text");
 let seconds = 0;
+let minutes = 0;
 
 function increaseSecondsInCounter() {
     seconds++;
-    ReactDOM.render(<Home seconds={seconds}/>, document.querySelector("#app"));
+
+    if (seconds >= 60) {
+        minutes++;
+        seconds = 0;
+    }
+
+    ReactDOM.render(<Home counter={formatTime(minutes, seconds)}/>, document.querySelector("#app"));
+}
+
+function formatTime(m, s) {
+    return `${formatNumber(m)}:${formatNumber(s)}`;
+}
+
+function formatNumber(number) {
+    return number >= 10 ? number : '0' + number;
 }
 
 setInterval(increaseSecondsInCounter, 1000);
