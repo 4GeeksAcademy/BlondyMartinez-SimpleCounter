@@ -8,5 +8,13 @@ import "../styles/index.css";
 //import your own components
 import Home from "./component/home.jsx";
 
-//render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+const COUNTER = document.querySelector(".counter-text");
+let seconds = 0;
+
+function increaseSecondsInCounter() {
+    seconds++;
+    ReactDOM.render(<Home seconds={seconds}/>, document.querySelector("#app"));
+}
+
+setInterval(increaseSecondsInCounter, 1000);
+
