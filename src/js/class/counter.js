@@ -89,7 +89,7 @@ class Counter {
                     this.seconds = 59;
                 }
     
-                title = 'Countdown from given number.';
+                title = `Countdown of ${this.userInput} seconds.`;
                 break;
         }
     
