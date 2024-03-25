@@ -9,11 +9,20 @@ let seconds = 0;
 let minutes = 0;
 let typeOfCounter = 'ON_LOAD';
 
+let userInput = 0;
+
 let counterInterval = setInterval(updateCounter, 1000);
 
 function updateCounter() {
     const { title, counter } = handleCounterType();
-    ReactDOM.render(<Home title={title} counter={counter} setCountdown={setCountdown} />, document.querySelector("#app"));
+    ReactDOM.render(<Home 
+            title={title} 
+            counter={counter} 
+            setCountdown={setCountdown} 
+            stop={stopCounter} 
+            resume={resume} 
+            restart={restart} />, 
+        document.querySelector("#app"));
 }
 
 
@@ -45,6 +54,7 @@ function handleCounterType() {
             if (seconds < 0) {
                 if (minutes <= 0) {
                     stopCounter();
+                    seconds = 0;
                     break;
                 }
 
@@ -60,15 +70,27 @@ function handleCounterType() {
 }
 
 function setCountdown(value) {
+    if (!value) return;
+
+    userInput = value;
+
     typeOfCounter = "COUNTDOWN";
     value++;
     minutes = Math.floor(value / 60);
     seconds = value % 60;
     
-    if (!counterInterval) counterInterval = setInterval(updateCounter, 1000);
+    resume();
 }
 
 function stopCounter(){
     clearInterval(counterInterval);
     counterInterval = null;
+}
+
+function restart() {
+    setCountdown(userInput);
+}
+
+function resume() { 
+    if (!counterInterval) counterInterval = setInterval(updateCounter, 1000);
 }
